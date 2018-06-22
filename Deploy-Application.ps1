@@ -147,7 +147,7 @@ Try {
 		## <Perform Post-Installation tasks here>
 		
 		## Display a message at the end of the install
-		If (-not $useDefaultMsi) { Show-InstallationPrompt -Message 'Bloomberg Update Mai 2018 is now installed.`nYou could close this windows' -ButtonRightText 'OK' -Icon Information -NoWait }
+		If (-not $useDefaultMsi) { Show-InstallationPrompt -Message 'Bloomberg Update Mai 2018 is now installed. You could close this windows' -ButtonRightText 'OK' -Icon Information -NoWait }
 	}
 	ElseIf ($deploymentType -ieq 'Uninstall')
 	{
