@@ -116,7 +116,7 @@ Try {
 		##*===============================================
 		[string]$installPhase = 'Pre-Installation'
 
-		## Show Welcome Message, close Internet Bloomberg if required, allow up to 3 deferrals, verify there is enough disk space to complete the install, and persist the prompt
+		## Show Welcome Message, close Bloomberg if required,
 		Show-InstallationWelcome -CloseApps 'wintrv=Bloomberg' -ForceCountdown 10
 		
 		## Show Progress Message (with the default message)
