@@ -62,18 +62,18 @@ Try {
 	##*===============================================
 	## Variables: Application
 	[string]$appVendor = 'Bloomberg'
-	[string]$appName = 'Bloomber Professional'
-	[string]$appVersion = 'Mai 2018'
-	[string]$appArch = 'x64'
+	[string]$appName = 'Bloomberg Professional'
+	[string]$appVersion = 'July'
+	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '19/06/2018'
+	[string]$appScriptDate = '08/13/'
 	[string]$appScriptAuthor = 'Mickael Hofer'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
-	[string]$installName = 'Bloomberg Update Mai 2018'
-	[string]$installTitle = 'Bloomberg Update Mai 2018'
+	[string]$installName = 'Bloomberg Professional July 2018'
+	[string]$installTitle = 'Bloomberg Professional July 2018'
 	
 	##* Do not modify section below
 	#region DoNotModify
@@ -116,8 +116,8 @@ Try {
 		##*===============================================
 		[string]$installPhase = 'Pre-Installation'
 
-		## Show Welcome Message, close Bloomberg if required,
-		Show-InstallationWelcome -CloseApps 'wintrv=Bloomberg' -ForceCountdown 10
+		## Show Welcome Message, close Internet Explorer if required, allow up to 3 deferrals, verify there is enough disk space to complete the install, and persist the prompt
+		Show-InstallationWelcome -CloseApps 'WinWord,Excel' -PersistPrompt
 		
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
@@ -137,7 +137,7 @@ Try {
 		}
 		
 		## <Perform Installation tasks here>
-		Execute-Process -Path "sotrt05072018.exe" -Parameters "/S"
+		Execute-Process -Path "sotrt07082018.exe" -Parameters "/S"
 		
 		##*===============================================
 		##* POST-INSTALLATION
@@ -147,7 +147,7 @@ Try {
 		## <Perform Post-Installation tasks here>
 		
 		## Display a message at the end of the install
-		If (-not $useDefaultMsi) { Show-InstallationPrompt -Message 'Bloomberg Update Mai 2018 is now installed. You could close this windows' -ButtonRightText 'OK' -Icon Information -NoWait }
+		If (-not $useDefaultMsi) { Show-InstallationPrompt -Message 'Installation of Bloomberg July 2018 done' -ButtonRightText 'OK' -Icon Information -NoWait }
 	}
 	ElseIf ($deploymentType -ieq 'Uninstall')
 	{
@@ -177,7 +177,7 @@ Try {
 		}
 		
 		# <Perform Uninstallation tasks here>
-		Execute-Process -Path "C:\ProgramData\{59FC24FF-8E39-4EA0-9406-9D3C5EB7FDCF}\sotrt.exe" -Parameters "REMOVE=TRUE /S"
+		Execute-Process -Path "C:\ProgramData\{2F2C93A2-C166-4AD4-B2AD-BB2E97739EF9}\sotrt.exe" -Parameters "REMOVE=TRUE /S"
 		
 		##*===============================================
 		##* POST-UNINSTALLATION
