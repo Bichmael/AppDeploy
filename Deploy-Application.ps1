@@ -61,19 +61,19 @@ Try {
 	##* VARIABLE DECLARATION
 	##*===============================================
 	## Variables: Application
-	[string]$appVendor = ''
-	[string]$appName = ''
-	[string]$appVersion = ''
+	[string]$appVendor = 'Bloomberg'
+	[string]$appName = 'Bloomberg Professional'
+	[string]$appVersion = 'August'
 	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '02/12/2017'
-	[string]$appScriptAuthor = '<author name>'
+	[string]$appScriptDate = '08/29/'
+	[string]$appScriptAuthor = 'Mickael Hofer'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
-	[string]$installName = ''
-	[string]$installTitle = ''
+	[string]$installName = 'Bloomberg Professional August 2018'
+	[string]$installTitle = 'Bloomberg Professional August 2018'
 	
 	##* Do not modify section below
 	#region DoNotModify
@@ -117,7 +117,7 @@ Try {
 		[string]$installPhase = 'Pre-Installation'
 
 		## Show Welcome Message, close Internet Explorer if required, allow up to 3 deferrals, verify there is enough disk space to complete the install, and persist the prompt
-		Show-InstallationWelcome -CloseApps 'iexplore' -AllowDefer -DeferTimes 3 -CheckDiskSpace -PersistPrompt
+		Show-InstallationWelcome -CloseApps 'WinWord,Excel' -PersistPrompt
 		
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
@@ -137,7 +137,7 @@ Try {
 		}
 		
 		## <Perform Installation tasks here>
-		
+		Execute-Process -Path "sotrt080918.exe" -Parameters "/S"
 		
 		##*===============================================
 		##* POST-INSTALLATION
@@ -147,7 +147,7 @@ Try {
 		## <Perform Post-Installation tasks here>
 		
 		## Display a message at the end of the install
-		If (-not $useDefaultMsi) { Show-InstallationPrompt -Message 'You can customize text to appear at the end of an install or remove it completely for unattended installations.' -ButtonRightText 'OK' -Icon Information -NoWait }
+		If (-not $useDefaultMsi) { Show-InstallationPrompt -Message 'Installation of Bloomberg August 2018 done' -ButtonRightText 'OK' -Icon Information -NoWait }
 	}
 	ElseIf ($deploymentType -ieq 'Uninstall')
 	{
@@ -157,7 +157,7 @@ Try {
 		[string]$installPhase = 'Pre-Uninstallation'
 		
 		## Show Welcome Message, close Internet Explorer with a 60 second countdown before automatically closing
-		Show-InstallationWelcome -CloseApps 'iexplore' -CloseAppsCountdown 60
+		Show-InstallationWelcome -CloseApps 'WinWord,Excel'
 		
 		## Show Progress Message (with the default message)
 		Show-InstallationProgress
@@ -177,7 +177,7 @@ Try {
 		}
 		
 		# <Perform Uninstallation tasks here>
-		
+		Execute-Process -Path "C:\ProgramData\{7DD82EF9-B0C8-405E-BE89-FFB0F0322284}\sotrt.exe" -Parameters "REMOVE=TRUE /S"
 		
 		##*===============================================
 		##* POST-UNINSTALLATION
